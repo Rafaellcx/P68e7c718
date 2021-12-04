@@ -32,7 +32,9 @@ class CreateUserTable extends Migration
      */
     public function down()
     {
-        Schema::dropForeign('type_user_id');
+        Schema::table('user', function (Blueprint $table) {
+            $table->dropForeign('user_type_user_id_foreign');
+        });
         Schema::dropIfExists('user');
     }
 }
