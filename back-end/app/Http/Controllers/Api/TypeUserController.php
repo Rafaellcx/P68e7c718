@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use App\Http\Requests\StoreTypeUserRequest;
 use App\Http\Requests\UpdateTypeUserRequest;
 use App\Models\TypeUser;
+use App\Http\Controllers\Controller;
 
 class TypeUserController extends Controller
 {

@@ -15,7 +15,7 @@ class CreateUserTable extends Migration
     {
         Schema::create('user', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->foreignId('type_user_id')->constrained('user');
+            // $table->foreignId('type_user_id')->constrained('user');
             $table->string('name', 100);
             $table->string('email', 100)->unique();
             $table->string('password', 200);
@@ -23,6 +23,13 @@ class CreateUserTable extends Migration
             $table->softDeletes('deleted_at', 0);
 
         });
+
+        Schema::table('user', function (Blueprint $table) {
+            $table->unsignedBigInteger('type_user_id');
+
+            $table->foreign('type_user_id')->references('id')->on('type_user');
+        });
+
     }
 
     /**
