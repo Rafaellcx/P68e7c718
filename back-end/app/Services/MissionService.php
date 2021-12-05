@@ -16,6 +16,7 @@ class MissionService
     public function findById($id)
     {
         $mission = $this->missionRepository->findById($id);
+
         if (empty($mission)) {
             return response()->json(['error' => 'Nenhum registro encontrado.'], 404);
         }
@@ -26,8 +27,18 @@ class MissionService
 
     public function save($request)
     {
-        $mission = $this->missionRepository->save($request);
+        return $this->missionRepository->save($request);
+    }
 
-        return response()->json(new MissionResource($mission), 201);
+    public function delete($id)
+    {
+        $mission = $this->missionRepository->findById($id);
+        if (empty($mission)) {
+            return response()->json(['error' => 'Nenhum registro encontrado.'], 404);
+        }
+
+        $mission = $this->missionRepository->delete($id);
+        return response()->noContent();
+
     }
 }

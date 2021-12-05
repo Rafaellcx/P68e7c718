@@ -3,11 +3,12 @@
 namespace App\Services;
 
 use App\Repositories\UserRepository;
-use App\Http\Resources\UserResource;
 
-class UserService {
-  
-    public function __construct(UserRepository $userRepository) {
+class UserService
+{
+
+    public function __construct(UserRepository $userRepository)
+    {
         $this->userRepository = $userRepository;
     }
 
@@ -24,8 +25,6 @@ class UserService {
 
     public function save($request)
     {
-        $user = $this->userRepository->save($request);
-
-        return response()->json(new UserResource($user), 201);
+        return $this->userRepository->save($request);
     }
 }

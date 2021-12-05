@@ -29,4 +29,12 @@ Route::namespace ('App\Http\Controllers\Api')
     ->prefix('mission')->group(function () {
     Route::get('show/{id}', 'MissionController@show');
     Route::post('store', 'MissionController@store');
+    Route::delete('delete/{id}', 'MissionController@destroy');
+});
+
+Route::namespace ('App\Http\Controllers\Api')
+    ->prefix('log-mission')->group(function () {
+    Route::get('show/{id}', 'LogCommandMissionController@show');
+    Route::get('commands-mission/{mission_id}', 'LogCommandMissionController@findCommandsByMission');
+    Route::post('store', 'LogCommandMissionController@store');
 });

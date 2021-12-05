@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Api;
 
-use Illuminate\Http\Request;
-use App\Services\UserService;
-use App\Http\Requests\StoreUserRequest;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreUserRequest;
+use App\Http\Resources\UserResource;
+use App\Services\UserService;
+use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
@@ -15,10 +16,10 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-     public function __construct(UserService $userService) {
+    public function __construct(UserService $userService)
+    {
         $this->userService = $userService;
     }
-
 
     /**
      * Display the specified resource.
@@ -28,10 +29,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $user = $this->userService->findById($id);
-        
-        return response()->json($user);
-
+        return $this->userService->findById($id);
     }
 
     /**
@@ -44,20 +42,7 @@ class UserController extends Controller
     {
         $user = $this->userService->save($request);
 
-        return response()->json($user);
-    }
-
-    
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+        return response()->json(new UserResource($user), 201);
     }
 
     /**

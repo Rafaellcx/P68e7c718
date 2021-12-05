@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreMissionRequest;
 use App\Http\Requests\UpdateMissionRequest;
 use App\Models\Mission;
 use App\Services\MissionService;
-use App\Http\Controllers\Controller;
-
+use App\Http\Resources\MissionResource;
 class MissionController extends Controller
 {
-    public function __construct(MissionService $missionService) {
+    public function __construct(MissionService $missionService)
+    {
         $this->missionService = $missionService;
     }
 
@@ -24,7 +25,7 @@ class MissionController extends Controller
         //
     }
 
-     /**
+    /**
      * Display the specified resource.
      *
      * @param  \App\Models\Mission  $mission
@@ -32,9 +33,8 @@ class MissionController extends Controller
      */
     public function show($id)
     {
-        $mission = $this->missionService->findById($id);
-        
-        return response()->json($mission);
+        return $this->missionService->findById($id);
+
     }
 
     /**
@@ -46,10 +46,10 @@ class MissionController extends Controller
     public function store(StoreMissionRequest $request)
     {
         $mission = $this->missionService->save($request);
-        return response()->json($mission);
-    }
+        
+        return response()->json(new MissionResource($mission), 201);
 
-   
+    }
 
     /**
      * Update the specified resource in storage.
@@ -69,8 +69,9 @@ class MissionController extends Controller
      * @param  \App\Models\Mission  $mission
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Mission $mission)
+    public function destroy($id)
     {
-        //
+        return $this->missionService->delete($id);
+
     }
 }

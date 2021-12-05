@@ -33,12 +33,18 @@ class User extends Model
         'name',
         'email',
         'password',
+        'type_user_id'
     ];
 
     protected $casts = [
         'name' => 'string',
         'email' => 'string',
-        'password' => 'string'
+        'password' => 'string',
+        'type_user_id' => 'integer'
     ];
 
+    public function typeUser()
+    {
+        return $this->belongsTo(TypeUser::class, 'type_user_id', 'id');
+    }
 }

@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class MissionResource extends JsonResource
+class LogCommandMissionResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,7 +16,9 @@ class MissionResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'name' => $this->name,
+            'description' => $this->description,
+            'mission_id' => $this->mission_id,
+            'mission' => $this->mission->name,
             'user_id' => $this->user_id,
             'user' => $this->user->name,
             'isAdmin' => $this->user->typeuser->isAdmin
