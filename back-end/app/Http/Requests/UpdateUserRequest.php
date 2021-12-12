@@ -24,10 +24,9 @@ class UpdateUserRequest extends FormRequest
     public function rules()
     {
         return [
-            'id' => 'required', 
-            'name' => 'required', 
-            'email' => 'required',
-            'password' => 'required'
+            'name' => ['required', 'max:100'], 
+            'email' => ['required', 'unique'],
+            'email' => ['required', 'unique:user,email,'.$this->id, 'max:100'],
         ];
 
     }
@@ -35,10 +34,11 @@ class UpdateUserRequest extends FormRequest
     public function messages()
     {
         return [
-            'id.required' => 'Id não informado.',
             'name.required' => 'Nome não informado.',
+            'name.max' => 'Nome não pode ter mais que 100 caracteres.',
             'email.required' => 'E-mail não informado.',
-            'password.required' => 'Senha não informada.'
+            'email.unique' => 'E-mail deve ser único.',
+            'email.max' => 'E-mail não pode ter mais que 100 caracteres.',
         ];
     }
 }

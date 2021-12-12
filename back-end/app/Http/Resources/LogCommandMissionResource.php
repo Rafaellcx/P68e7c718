@@ -21,7 +21,9 @@ class LogCommandMissionResource extends JsonResource
             'mission' => $this->mission->name,
             'user_id' => $this->user_id,
             'user' => $this->user->name,
-            'isAdmin' => $this->user->typeuser->isAdmin
+            'isAdmin' => $this->user->typeuser->isAdmin,
+            'typeUserName' => $this->user->typeuser->name,
+            'created_at' => $this->created_at_log_mission
         ];
 
     }

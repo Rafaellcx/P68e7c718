@@ -50,27 +50,4 @@ class LogCommandMissionController extends Controller
     {
         return $this->logCommandMissionService->findById($id);
     }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateLogCommandMissionRequest  $request
-     * @param  \App\Models\LogCommandMission  $logCommandMission
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdateLogCommandMissionRequest $request, LogCommandMission $logCommandMission)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\LogCommandMission  $logCommandMission
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(LogCommandMission $logCommandMission)
-    {
-        //
-    }
 }

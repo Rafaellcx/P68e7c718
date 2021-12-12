@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreMissionRequest;
 use App\Http\Requests\UpdateMissionRequest;
+use App\Http\Requests\FinishMissionRequest;
 use App\Models\Mission;
 use App\Services\MissionService;
 use App\Http\Resources\MissionResource;
@@ -22,7 +23,14 @@ class MissionController extends Controller
      */
     public function index()
     {
-        //
+        return $this->missionService->findAll();
+
+    }
+   
+    public function findMostRecent()
+    {
+        return $this->missionService->findMostRecent();
+
     }
 
     /**
@@ -50,17 +58,10 @@ class MissionController extends Controller
         return response()->json(new MissionResource($mission), 201);
 
     }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateMissionRequest  $request
-     * @param  \App\Models\Mission  $mission
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdateMissionRequest $request, Mission $mission)
+    public function finish(FinishMissionRequest $request)
     {
-        //
+       return $this->missionService->finish($request);
+
     }
 
     /**

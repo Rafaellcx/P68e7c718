@@ -21,6 +21,7 @@ class Mission extends Model
 
     protected $fillable = [
         'name',
+        'has_finished',
         'user_id'
     ];
 
@@ -31,11 +32,26 @@ class Mission extends Model
      */
     protected $casts = [
         'name' => 'string',
+        'has_finished' => 'bool',
         'user_id' => 'integer'
     ];
 
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+
+    public function getStatusMissionAttribute() 
+    {
+        if ($this->has_finished) {
+            return 'SIM';
+        }
+
+        return 'NÃO';
+    }
+
+    public function getCreatedAtMissionAttribute() 
+    {
+    return date("d/m/Y H:i:s", strtotime($this->created_at));
     }
 }

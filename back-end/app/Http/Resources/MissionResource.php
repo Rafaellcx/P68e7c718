@@ -19,7 +19,10 @@ class MissionResource extends JsonResource
             'name' => $this->name,
             'user_id' => $this->user_id,
             'user' => $this->user->name,
-            'isAdmin' => $this->user->typeuser->isAdmin
+            'isAdmin' => $this->user->typeuser->isAdmin,
+            'typeUserName' => $this->user->typeuser->name,
+            'statusMission' => $this->status_mission,
+            'created_at' => $this->created_at_mission
         ];
 
     }

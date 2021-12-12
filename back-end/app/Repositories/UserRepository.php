@@ -12,6 +12,13 @@ use Illuminate\Support\Facades\Hash;
  */
 class UserRepository
 {
+    public function findAll()
+    {
+        $users = User::all();
+
+        return $users;
+    }
+   
     public function findById($id)
     {
         $user = User::find($id);

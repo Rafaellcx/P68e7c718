@@ -46,4 +46,9 @@ class LogCommandMission extends Model
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
+
+    public function getCreatedAtLogMissionAttribute() 
+    {
+    return date("d/m/Y H:i:s", strtotime($this->created_at));
+    }
 }

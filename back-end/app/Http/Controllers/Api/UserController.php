@@ -21,6 +21,12 @@ class UserController extends Controller
         $this->userService = $userService;
     }
 
+    public function index()
+    {
+        return $this->userService->findAll();
+
+    }
+
     /**
      * Display the specified resource.
      *
@@ -43,28 +49,5 @@ class UserController extends Controller
         $user = $this->userService->save($request);
 
         return response()->json(new UserResource($user), 201);
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }

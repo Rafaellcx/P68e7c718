@@ -17,6 +17,7 @@ class CreateMissionTable extends Migration
             $table->bigIncrements('id');
             // $table->foreignId('user_id')->constrained('user');
             $table->string('name', 100);
+            $table->boolean('has_finished');
             $table->timestamps();
             $table->softDeletes('deleted_at', 0);
         });

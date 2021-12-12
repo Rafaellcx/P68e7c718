@@ -25,9 +25,9 @@ class StoreUserRequest extends FormRequest
     {
         return [
             'type_user_id' => 'required',
-            'name' => 'required', 
-            'email' => 'required',
-            'password' => 'required'
+            'name' => ['required', 'max:100'],
+            'email' => ['required', 'unique:user', 'max:100'],
+            'password' => ['required', 'max:200'],
         ];
 
     }
@@ -37,8 +37,12 @@ class StoreUserRequest extends FormRequest
         return [
             'type_user_id.required' => 'Id do Tipo de Usuário não informado.',
             'name.required' => 'Nome não informado.',
+            'name.max' => 'Nome não pode ter mais que 100 caracteres.',
+            'email.unique' => 'E-mail deve ser único.',
             'email.required' => 'E-mail não informado.',
-            'password.required' => 'Senha não informada.'
+            'email.max' => 'E-mail não pode ter mais que 100 caracteres.',
+            'password.required' => 'Senha não informada.',
+            'password.max' => 'Senha não pode ter mais que 200 caracteres.'
         ];
     }
 }

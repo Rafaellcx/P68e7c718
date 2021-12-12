@@ -47,4 +47,9 @@ class User extends Model
     {
         return $this->belongsTo(TypeUser::class, 'type_user_id', 'id');
     }
+
+    public function getCreatedAtUserAttribute() 
+    {
+    return date("d/m/Y H:i:s", strtotime($this->created_at));
+    }
 }
