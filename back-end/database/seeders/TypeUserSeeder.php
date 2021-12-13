@@ -20,7 +20,7 @@ class TypeUserSeeder extends Seeder
             ['name' => 'Tripulante', 'isAdmin' => false, 'created_at' => date('Y-m-d H:i:s'), 'updated_at' => date('Y-m-d H:i:s')],
         );
         \DB::table('type_user')->insert(
-            ['name' => 'Sala de Controle', 'isAdmin' => false, 'created_at' => date('Y-m-d H:i:s'), 'updated_at' => date('Y-m-d H:i:s')]
+            ['name' => 'Sala de Controle', 'isAdmin' => true, 'created_at' => date('Y-m-d H:i:s'), 'updated_at' => date('Y-m-d H:i:s')]
         );
     }
 }
