@@ -64,10 +64,10 @@ docker container stop pulses_back pulses_front pulses_banco
 ### Exemplo para salvar um usuário:
 ```sh
 {
-	"type_user_id": 1,
-	"name": "admin",
-	"email": "admin@gmail.com",
-	"password": "123456"
+  "type_user_id": 1,
+  "name": "admin",
+  "email": "admin@gmail.com",
+  "password": "123456"
 }
 ```
 | Legenda | salvando um usuário |
@@ -89,8 +89,8 @@ docker container stop pulses_back pulses_front pulses_banco
 ### Exemplo para salvar uma missão:
 ```sh
 {
-	"name": "Primeira Missão Tripulada",
-	"user_id": 1
+  "name": "Primeira Missão Tripulada",
+  "user_id": 1
 }
 ```
 | Legenda | salvando uma missão |
@@ -101,8 +101,8 @@ docker container stop pulses_back pulses_front pulses_banco
 ### Exemplo para finalizar uma missão:
 ```sh
 {
-	"id": 1,
-	"user_id": 1
+  "id": 1,
+  "user_id": 1
 }
 ```
 | Legenda | Finalizando uma missão |
@@ -118,8 +118,8 @@ docker container stop pulses_back pulses_front pulses_banco
 ### Exemplo para fazer login:
 ```sh
 {
-	"email": "silva@gmail.com",
-	"password":"123"
+  "email": "silva@gmail.com",
+  "password":"123"
 }
 ```
 
