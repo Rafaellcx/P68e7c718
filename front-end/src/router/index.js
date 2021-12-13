@@ -10,7 +10,12 @@ Vue.use(VueRouter)
 const routes = [
   ...ControlPanel,
   ...Missions,
-  ...Login
+  ...Login,
+  {
+    path: "/",
+    name: "login",
+    component: () => import("../login/views/Login.vue"),
+  },
 ]
 
 const router = new VueRouter({

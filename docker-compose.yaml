@@ -1,0 +1,39 @@
+version: "3.7"
+services:
+# container back-end da aplicação
+  pulses_back:
+    container_name: pulses_back
+    build:
+      context: .
+      dockerfile: back-end.Dockerfile
+    ports: 
+      - 8000:80
+    networks:
+      - net-pulses
+      
+  pulses_banco:
+    container_name: pulses_banco
+    image: mysql:5.6
+    volumes:
+      - data-base-mysql:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=pulses
+    networks: 
+      - net-pulses
+  
+  pulses_front:
+    container_name: pulses_front
+    build:
+      context: .
+      dockerfile: front-end.Dockerfile
+    ports: 
+      - 8001:80
+    networks:
+      - net-pulses
+      
+networks:
+  net-pulses:
+
+volumes:
+  data-base-mysql:

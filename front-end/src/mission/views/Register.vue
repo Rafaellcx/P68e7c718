@@ -77,7 +77,7 @@ export default {
       .catch((error) => {
         if (error.response.data.status === 401) {
           this.errorMessage("", error.response.data.erro)
-          this.$router.push({ path: '/login' })  
+          this.$router.push({ path: '/' })  
         }
   
         if (error.response.data.errors.user_id) {

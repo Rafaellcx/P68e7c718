@@ -252,6 +252,7 @@ export default {
               "success"
             )
           }
+          this.$router.push('/missions')
         })
         .catch((error) => {
           console.log(error)
@@ -284,6 +285,10 @@ export default {
         })
     },
     logCommandsMission() {
+      if (!this.mission_id) {
+        this.$router.push('/missions')
+        return
+      }
       api
         .get("log-mission/commands-mission/" + this.mission_id).then((response) => {
           if (response.status === 200) {

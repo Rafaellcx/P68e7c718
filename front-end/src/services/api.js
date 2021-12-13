@@ -20,7 +20,7 @@ api.interceptors.response.use(
       window.location.href = error.data
     }
     if (error.response.data.status === 401) {
-      router.push('/login')
+      router.push('/')
     }
     return Promise.reject(error)
   }
