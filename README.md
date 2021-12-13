@@ -2,10 +2,6 @@
 
 Projeto foi criado para o teste de conhecimentos da Pulses.  
 
-**ÍNDICE**
-
-[TOC]
-
 ## Solução
 
 Elaborado utilizando o framework Laravel 8, VueJS 2,  banco de dados MySQL e Docker para conteinerização da aplicação. O código foi escrito em inglês para manter um melhor padrão de desenvolvimento e as mensagens de retorno estão propositalmente em português.
