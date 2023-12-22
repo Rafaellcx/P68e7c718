@@ -1,15 +1,15 @@
-## PULSES
+## Test
 
-Project was created to test Pulses knowledge.  
+The project was created for a knowledge test.  
 
-## Solução
+## Soluction
 
-Created using the Laravel 8 framework, VueJS 2, MySQL database and Docker for application containerization. The code was written in English to maintain a better development standard and the return messages are purposely in Portuguese.
+It was created using the Laravel 8 framework, VueJS 2, MySQL database and Docker for application containerization. The code was written in English to maintain a better development standard and the return messages are purposely in Portuguese.
 
-Obs: The `.env` file was sent with the project (**even though it is not a good practice**) with the aim of facilitating the execution of the project by ensuring that the evaluator does not have to make such configurations on it.
+Obs: The `.env` file was sent with the project (**even though it is not a good practice**) to facilitate the execution of the project by ensuring that the evaluator does not have to make such configurations on it.
 ## How to execute the project
 
-After downloading the **P68e7c718** repository, being in its main folder "**P68e7c718**", upload the structure made up of the following containers:
+After downloading the **P68e7c718** repository, which is in its main folder "**P68e7c718**", upload the structure made up of the following containers:
 
 - **pulses_back:** Composed with Apache and PHP, with port `8000` being exposed;
 - **pulses_front**: Using Nginx with the front-end application (VueJS), exposing port `8001`;
@@ -30,7 +30,7 @@ After completing the creation of the containers, we must execute the commands be
 ```sh 
 docker exec -it  pulses_back php artisan db:seed --class=TypeUserSeeder
 ```
-> 3. Used to create an administrator type user:
+> 3. Used to create an administrator-type user:
 ```sh 
 docker exec -it  pulses_back php artisan db:seed --class=UserSeeder
 ```
@@ -96,7 +96,7 @@ docker container stop pulses_back pulses_front pulses_banco
 | Caption | saving a mission |
 | ------ | ------ |
 | name | Mission name |
-| user_id | user code that saved the mission (Can be consulated in the `USER - List all` endpoint) |
+| user_id | user code that saved the mission (Can be consulted in the `USER - List all` endpoint) |
 
 ### Example to finish a mission:
 ```sh
@@ -108,7 +108,7 @@ docker container stop pulses_back pulses_front pulses_banco
 | Caption | Finishing a mission |
 | ------ | ------ |
 | id | Mission ID (Can be consulted in the `MISSION - Search for the most recent open mission` endpoint) |
-| user_id | user code that completed the mission (Can be consulated in the `USER - List all` endpoint) |
+| user_id | user code that completed the mission (Can be consulted in the `USER - List all` endpoint) |
 
 | AUTHENTICATE | |
 | ------ | ------ |
@@ -133,7 +133,7 @@ docker container stop pulses_back pulses_front pulses_banco
 | List user types | http://127.0.0.1:8000/api/type-user/all |
 
 ## Running the endpoints through Insomnia
-To facilitate testing, I made the file `InsomniaPulses.json` available at the root of the project, which can be imported and executed by `Insomnia`.
+To facilitate testing, I made the file `InsomniaPulses.json` available at the project's root, which can be imported and executed by `Insomnia`.
 
 ## Comments:
 - Only `users` of type `Administrator` can:
