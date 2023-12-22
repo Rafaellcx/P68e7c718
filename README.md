@@ -1,67 +1,67 @@
 ## PULSES
 
-Projeto foi criado para o teste de conhecimentos da Pulses.  
+Project was created to test Pulses knowledge.  
 
 ## Solução
 
-Elaborado utilizando o framework Laravel 8, VueJS 2,  banco de dados MySQL e Docker para conteinerização da aplicação. O código foi escrito em inglês para manter um melhor padrão de desenvolvimento e as mensagens de retorno estão propositalmente em português.
+Created using the Laravel 8 framework, VueJS 2, MySQL database and Docker for application containerization. The code was written in English to maintain a better development standard and the return messages are purposely in Portuguese.
 
-Obs: O arquivo `.env` foi enviado junto ao projeto(**mesmo ciente de que não é uma boa prática**) com o intuito de facilitar a execução do projeto fazendo com que o avaliador não tenha que fazer tais configurações no mesmo.
-## Como executar o projeto
+Obs: The `.env` file was sent with the project (**even though it is not a good practice**) with the aim of facilitating the execution of the project by ensuring that the evaluator does not have to make such configurations on it.
+## How to execute the project
 
-Após baixar o repositório **P68e7c718**, estando na pasta principal do mesmo"**P68e7c718**", suba a estrutura composta pelos seguintes containers:
+After downloading the **P68e7c718** repository, being in its main folder "**P68e7c718**", upload the structure made up of the following containers:
 
-- **pulses_back:** Composto com Apache e PHP, sendo exposta a porta `8000`;
-- **pulses_front**: Usando Nginx com a aplicação front-end(VueJS), sendo exposta a porta `8001`;
-- **pulses_banco:** Com o banco de dados MySql.
+- **pulses_back:** Composed with Apache and PHP, with port `8000` being exposed;
+- **pulses_front**: Using Nginx with the front-end application (VueJS), exposing port `8001`;
+- **pulses_banco:** With the MySql database.
 
-Através do seguinte comando:
+Through the following command:
 ```sh 
 docker-compose up --build
 ```
 
-Após a finalização da criação dos containers, devemos executar os comandos abaixo para que o ambiente esteja pronto para ser usado:
+After completing the creation of the containers, we must execute the commands below so that the environment is ready to be used:
 
-> 1. Utilizado para popular o banco com as tabelas necessárias da solução:
+> 1. Used to populate the database with the necessary solution tables:
    ```sh 
    docker exec -ti pulses_back php artisan migrate
    ```
-> 2. Utilizado para criar os tipos de usuários:
+> 2. Used to create user types:
 ```sh 
 docker exec -it  pulses_back php artisan db:seed --class=TypeUserSeeder
 ```
-> 3. Utilizado para criar um usuário do tipo administrador:
+> 3. Used to create an administrator type user:
 ```sh 
 docker exec -it  pulses_back php artisan db:seed --class=UserSeeder
 ```
-Agora podemos utilizar a aplicação através do endereço "http://localhost:8001". 
-Para fazer o login, devemos utilizar o E-mail: `admin@gmail.com` e a Senha: `123456`
+Now we can use the application using the address "http://localhost:8001".
+To log in, we must use the E-mail: `admin@gmail.com` and the Password: `123456`
 
-Caso queira rodar a aplicação posteriormente, verifique se os containers `pulses_back`, `pulses_front` e `pulses_banco` estão ativos executando o seguinte comando:
+If you want to run the application later, check that the `pulses_back`, `pulses_front` and `pulses_banco` containers are active by running the following command:
 
 ```sh
 docker container ls -a
 ```
-Caso queira iniciar os containers  `pulses_back`, `pulses_front` e `pulses_banco`, execute o seguinte comando:
+If you want to start the `pulses_back`, `pulses_front` and `pulses_banco` containers, run the following command:
 ```sh
 docker container start pulses_back pulses_front pulses_banco
 ```
-Caso queira parar os containers `pulses_back`, `pulses_front` e `pulses_banco`, execute o seguinte comando:
+If you want to stop the `pulses_back`, `pulses_front` and `pulses_banco` containers, run the following command:
 ```sh
 docker container stop pulses_back pulses_front pulses_banco
 ```
-## Endpoints para testes
-##### Lembrete: Como quase todas as rodas requerem autenticação, não se esqueça de configurar o `Header` do seu endpoint com a chave: `Authorization`  e o valor: `bearer`  `valor do token`
+## Endpoints for testing
+##### Reminder: Since almost all wheels require authentication, don't forget to configure your endpoint's `Header` with key: `Authorization` and value: `bearer` `token value`
 
-| USER |  |
+| USER | |
 | ------ | ------ |
-| Listar todos | http://127.0.0.1:8000/api/user/all |
-| Buscar um usuário em específico | http://127.0.0.1:8000/api/user/show/{id} |
-| Salvar | http://127.0.0.1:8000/api/user/store |
+| List all | http://127.0.0.1:8000/api/user/all |
+| Search for a specific user | http://127.0.0.1:8000/api/user/show/{id} |
+| Save | http://127.0.0.1:8000/api/user/store |
 
-## Estrutura JSON para os seguintes endpoints
+## JSON structure for the following endpoints
 
-### Exemplo para salvar um usuário:
+### Example to save a user:
 ```sh
 {
   "type_user_id": 1,
@@ -70,52 +70,52 @@ docker container stop pulses_back pulses_front pulses_banco
   "password": "123456"
 }
 ```
-| Legenda | salvando um usuário |
+| Caption | saving a user |
 | ------ | ------ |
-| type_user_id | Código do tipo de usuário(1 - Administrador; 2 - Tripulante; 3 - Sala de Controle) |
-| name | Nome do usuário|
-| email | E-mail do usuário |
-| password | Senha do usuário |
+| type_user_id | User type code (1 - Administrator; 2 - Crew member; 3 - Control Room) |
+| name | Username|
+| email | User email |
+| password | User password |
 
 
-| MISSION |  |
+| MISSION | |
 | ------ | ------ |
-| Buscar missão em aberto mais recente | http://127.0.0.1:8000/api/mission/findMostRecent |
-| Finalizar missão | http://127.0.0.1:8000/api/mission/finish |
-| Listar todas as missões | http://127.0.0.1:8000/api/mission/all |
-| Salvar | http://127.0.0.1:8000/api/mission/store |
-| Buscar por uma missão em específico | http://127.0.0.1:8000/api/mission/show/{1} |
+| Search latest open quest | http://127.0.0.1:8000/api/mission/findMostRecent |
+| Finish mission | http://127.0.0.1:8000/api/mission/finish |
+| List all missions | http://127.0.0.1:8000/api/mission/all |
+| Save | http://127.0.0.1:8000/api/mission/store |
+| Search for a specific mission | http://127.0.0.1:8000/api/mission/show/{1} |
 
-### Exemplo para salvar uma missão:
+### Example for saving a mission:
 ```sh
 {
   "name": "Primeira Missão Tripulada",
   "user_id": 1
 }
 ```
-| Legenda | salvando uma missão |
+| Caption | saving a mission |
 | ------ | ------ |
-| name | Nome da missão |
-| user_id | código do usuário que salvou a missão (Pode ser consulado no endpoint `USER - Listar todos`) |
+| name | Mission name |
+| user_id | user code that saved the mission (Can be consulated in the `USER - List all` endpoint) |
 
-### Exemplo para finalizar uma missão:
+### Example to finish a mission:
 ```sh
 {
   "id": 1,
   "user_id": 1
 }
 ```
-| Legenda | Finalizando uma missão |
+| Caption | Finishing a mission |
 | ------ | ------ |
-| id | ID da missão(Pode ser consultado no endpoint `MISSION - Buscar missão em aberto mais recente`) |
-| user_id | código do usuário que finalizou a missão(Pode ser consulado no endpoint `USER - Listar todos`) |
+| id | Mission ID (Can be consulted in the `MISSION - Search for the most recent open mission` endpoint) |
+| user_id | user code that completed the mission (Can be consulated in the `USER - List all` endpoint) |
 
-| AUTHENTICATE |  |
+| AUTHENTICATE | |
 | ------ | ------ |
-| Autentica o Token |http://127.0.0.1:8000/api/authtoken |
+| Authenticate the Token |http://127.0.0.1:8000/api/authtoken |
 | Login | http://127.0.0.1:8000/api/authenticate/login |
 
-### Exemplo para fazer login:
+### Example for logging in:
 ```sh
 {
   "email": "silva@gmail.com",
@@ -123,28 +123,28 @@ docker container stop pulses_back pulses_front pulses_banco
 }
 ```
 
-| Legenda | login do usuário |
+| Caption | user login |
 | ------ | ------ |
-| email | E-mail do usuário |
-| password | Senha do usuário |
+| email | User email |
+| password | User password |
 
-| USER TYPE |  |
+| USER TYPE | |
 | ------ | ------ |
-| Listar os tipos de usuários | http://127.0.0.1:8000/api/type-user/all |
+| List user types | http://127.0.0.1:8000/api/type-user/all |
 
-## Executando os endpoints pelo Insomnia
-Para facilitar os testes, disponibilizei na raíz do projeto o arquivo `InsomniaPulses.json` que pode ser importado e executado pelo `Insomnia`.
+## Running the endpoints through Insomnia
+To facilitate testing, I made the file `InsomniaPulses.json` available at the root of the project, which can be imported and executed by `Insomnia`.
 
-## Observações:
-- Somente `usuários` do tipo `Administrador` podem:
--- Executar dos comandos `Iniciar Lançamento` e `Encerrar Missão`;
--- Cadastrar nova `missão`;
--- Cadastrar novo `usuário`.
-- Só poderá ser cadastrada nova `missão` após a anterior ser encerrada.
-
-| Tipos de usuários | **É administrador?(SIM / NÃO)** |
+## Comments:
+- Only `users` of type `Administrator` can:
+-- Execute the `Start Launch` and `End Mission` commands;
+-- Register new `mission`;
+-- Register new `user`.
+- A new `mission` can only be registered after the previous one is closed.
+  
+| User types | **Are you an administrator? (YES / NO)** |
 | ------ | ------ |
-| Administrador | SIM |
-| Tripulante | NÃO |
-| Sala de Controle | SIM |
+| Administrator | YES |
+| Crew | NO |
+| Control Room | YES |
 
